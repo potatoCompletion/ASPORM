@@ -1,0 +1,15 @@
+﻿1. Install-Package Microsoft.EntityFrameworkCore.Tools
+2. Update-Package Microsoft.EntityFrameworkCore.Tools
+3. Update-Database -Args '--environment Production'
+4. Install-Package Pomelo.EntityFrameworkCore.MySql
+
+*(ConnectionString과 같은 민감한 정보 감추는 작업)
+4-1. powerShell 열어서 해당 프로젝트 폴더 진입
+4-2. dotnet user-secrets init
+4-3. dotnet user-secrets set "ConnectionStrings:myLocalDB" "저장할 커넥션스트링"
+
+5. Scaffold-DbContext "Name=설정한키이름:꺼낼속성이름" Pomelo.EntityFrameworkCore.MySql -OutputDir 원하는폴더명 -f
+
+
+
+* dotnet user-secrets를 사용하면 사용자 프로젝트 파일의 PropertyGroup 내에 UserSecretsId 요소를 추가한다. (GUID) 이 정보를 토대로 민감한 정보를 은닉할 수 있음.
